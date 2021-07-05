@@ -3,7 +3,9 @@ import { connect } from 'react-redux'
 import { addTodo, clearTodo } from '../actions'
 
 // 函数组件，接收 props 参数
-let AddTodo = ({ dispatch }) => {
+let AddTodo = (props) => {
+  const { dispatch } = props
+  console.log('addTodo', props)
   // dispatch 即 props.dispatch
   let input
 

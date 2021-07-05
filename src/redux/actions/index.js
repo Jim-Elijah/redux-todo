@@ -39,3 +39,44 @@ export const setVisibilityFilter = filter => {
     filter
   }
 }
+
+export const fetchData = () => {
+  return {
+    type: 'FETCH_DATA',
+    isFetch: true
+  }
+}
+
+export const mockFetch = () => new Promise((resolve, reject) => {
+   setTimeout(() => {
+      console.log('mockFetch promise')
+      const flag = Math.random();
+      console.log('flag', flag)
+      return flag > 0.5 ? resolve('greater') : reject('less')
+    }, 500);
+})
+
+export const onSuccess = (data) => {
+  return {
+    type: 'RECEIVE_DATA',
+    isFetch: false,
+    data: data,
+  }
+}
+
+export const onError = (data) => {
+  return {
+    type: 'RECEIVE_DATA',
+    isFetch: false,
+    data,
+  }
+}
+
+export const onFetch = () => (dispacth, getState) => {
+  dispacth(fetchData())
+  console.log('onFetch')
+  return mockFetch().then(
+    data => dispacth(onSuccess(data)),
+    err => dispacth(onError(err))
+  )
+}

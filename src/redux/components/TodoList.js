@@ -1,13 +1,12 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-// import Todo from './Todo'
-import Todo from './TodoItem';
+import TodoItem from './TodoItem';
 
-// 函数组件 { todos, onTodoClick } = props
+// 函数组件
 const TodoList = ({ todos, onDeleteTodo, onModifyTodo, onToggleTodo }) => (
   <React.Fragment>
     {todos.map(todo => (
-      <Todo key={todo.id} {...todo} onDeleteTodo={() => onDeleteTodo(todo.id)}
+      <TodoItem key={todo.id} {...todo} onDeleteTodo={() => onDeleteTodo(todo.id)}
         onModifyTodo={onModifyTodo} onToggleTodo={() => onToggleTodo(todo.id)} />
     ))}
   </React.Fragment>
