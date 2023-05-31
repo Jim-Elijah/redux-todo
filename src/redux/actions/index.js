@@ -72,9 +72,9 @@ export const onError = (data) => {
   }
 }
 
-export const onFetch = () => (dispacth, getState) => {
+export const onFetch = () => (dispacth, getState, rest) => {
   dispacth(fetchData())
-  console.log('onFetch')
+  console.log('onFetch', dispacth, getState, rest)
   return mockFetch().then(
     data => dispacth(onSuccess(data)),
     err => dispacth(onError(err))

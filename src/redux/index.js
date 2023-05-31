@@ -6,6 +6,7 @@ import todoApp from './reducers'
 import App from './components/App'
 import AsyncDemo from './containers/asyncActionDemo'
 
+import Login from './Login'
 
 let store
 
@@ -13,6 +14,7 @@ export default class APP extends React.Component {
   constructor(props) {
     super(props)
     store = createStore(todoApp, this.getState(), applyMiddleware(thunk))
+    console.log('index', store.getState())
     // store = createStore(todoApp, this.getState())
   }
   // 读取本地存储的数据 
@@ -34,6 +36,10 @@ export default class APP extends React.Component {
       <App />
       <hr />
       <AsyncDemo />
+
+      <hr />
+
+      <Login />
     </Provider>
   }
 }
